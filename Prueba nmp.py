@@ -1,6 +1,7 @@
 '''Daniela Gutiérrez Sandoval
 Programa para notificar si un dispositivo
-pierde la conexión a internet para la CSI SSP'''
+pierde la conexión a internet para la CSI SSP
+Octubre 2023'''
 
 import nmap
 import threading
@@ -32,7 +33,7 @@ def server1():
     while True:
         host='10.12.63.206'
         nm = nmap.PortScanner() 
-        nm.scan(host,'80', '-v') #Escaneo de la dirección y del puerto 80
+        nm.scan(host,'80', '-v --max-rate 100') #Escaneo de la dirección y del puerto 80
         
         #Comparación de un arreglo entre el estado anterior almacenado del escaneo y el nuevo
         if scanbefores1[1]=='up' and nm[host].state()=='down':
@@ -66,7 +67,7 @@ def server2():
     while True:
         host='10.12.63.207'
         nm = nmap.PortScanner()
-        nm.scan(host,'80', '-v')
+        nm.scan(host,'80', '-v --max-rate 100')
        
         if scanbefores2[1]=='up' and nm[host].state()=='down':
             state='down'
@@ -97,7 +98,7 @@ def server3():
     while True:
         host='187.174.171.97'
         nm = nmap.PortScanner()
-        nm.scan(host,'80', '-v')
+        nm.scan(host,'80', '-v --max-rate 100')
 
         if scanbefores3[1]=='up' and nm[host].state()=='down':
             state='down'
@@ -128,7 +129,7 @@ def server4():
     while True:
         host='201.116.248.194'
         nm = nmap.PortScanner()
-        nm.scan(host,'80, 11443', '-v')
+        nm.scan(host,'80, 11443', '-v --max-rate 100')
 
         if scanbefores4[1]=='up' and nm[host].state()=='down':
             state='down'
@@ -159,7 +160,7 @@ def server5():
     while True:
         host='10.21.128.201'
         nm = nmap.PortScanner()
-        nm.scan(host,'80', '-v')
+        nm.scan(host,'80', '-v --max-rate 100')
 
         if scanbefores5[1]=='up' and nm[host].state()=='down':
             state='down'
@@ -190,7 +191,7 @@ def host():
     while True:
         host='10.12.63.0/25'
         nm = nmap.PortScanner()
-        nm.scan(host,'80', '-v')
+        nm.scan(host,'80', '-v --max-rate 100')
 
         for k in range (len(nm.all_hosts())):
             scanbefore1=[[0]*2 for l in range (len(nm.all_hosts()))]
@@ -227,7 +228,7 @@ def host2():
     while True:
         host='187.174.171.0/25'
         nm = nmap.PortScanner()
-        nm.scan(host,'80', '-v')
+        nm.scan(host,'80', '-v --max-rate 100')
 
         for k in range (len(nm.all_hosts())):
             scanbefore2=[[0]*2 for l in range (len(nm.all_hosts()))]
@@ -264,7 +265,7 @@ def host3():
     while True:
         host='201.116.248.0/25'
         nm = nmap.PortScanner()
-        nm.scan(host,'80', '-v')
+        nm.scan(host,'80', '-v --max-rate 100')
 
         for k in range (len(nm.all_hosts())):
             scanbefore3=[[0]*2 for l in range (len(nm.all_hosts()))]
@@ -300,7 +301,7 @@ def host4():
     while True:
         host='10.21.128.0/25'
         nm = nmap.PortScanner()
-        nm.scan(host,'80', '-v')
+        nm.scan(host,'80', '-v --max-rate 100')
 
         for k in range (len(nm.all_hosts())):
             scanbefore4=[[0]*2 for l in range (len(nm.all_hosts()))]

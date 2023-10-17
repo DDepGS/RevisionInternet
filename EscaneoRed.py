@@ -258,12 +258,13 @@ enter.grid(row=3, column=2, pady=10, sticky=tk.W)
 #Función para buscar la IP ingresada
 def buscar():
     global placeholder
-    if not enter.get(): #Si no se ingrese nada se cambia el placeholder
-        placeholder='Ingrese IP'
-    else:
+    if enter.get(): 
         lista.selection_set(enter.get()) #Se selecciona, enfoca y muestra la IP cuyo id es igual 
         lista.focus(enter.get())
         lista.see(enter.get())
+    else:
+        placeholder.set('Ingrese IP')
+        
 
 #Función para ordenar la columna de estado
 def treeview_sort_column(tv, col, reverse):
